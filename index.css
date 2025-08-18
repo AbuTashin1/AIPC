@@ -1,0 +1,207 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #e8ebf0;
+}
+
+.logo img {
+    height: 80px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #0059ff;
+    background-color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    background-color: #0059ff;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav a:hover {
+    background: linear-gradient(90deg, #8dadec, #0059ff);
+    color: white;
+    border-color: #0059ff;
+}
+
+nav a:hover::after {
+    width: 80%;
+}
+
+/* ===== Tagline ===== */
+.tagline {
+    background: linear-gradient(90deg, #dce9ff, #c4daff);
+    padding: 20px;
+    
+    margin-top: 15px; /* closer to nav */
+    margin-bottom: 40px; /* more space before images */
+    text-align: center;
+    font-size: 1.2rem;
+    color: #1a2a5a;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tagline h2 {
+    margin: 0;
+    font-weight: bold;
+    color: rgb(0, 101, 184); 
+    font-style: italic;
+}
+
+/* Event Section */
+/* Event Section */
+.mainbox {
+    margin-bottom: 30px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.event-section {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* Event Row */
+.event-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; /* gap in the middle */
+}
+
+/* Alternate layout for even cards */
+.event-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Image Box */
+.event-image {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px;
+}
+
+.event-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.event-image img {
+    width: 450px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Text Box */
+.event-details {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    max-width: 500px;
+}
+
+.event-details:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.event-details h1 {
+    color: #1a2a5a;
+    margin-top: 0;
+}
+
+.event-details p {
+    color: #444;
+    line-height: 1.6;
+}
+
+
+/* Footer */
+/* ===== Footer (Merged) ===== */
+footer {
+    background: linear-gradient(90deg, #4f73e1, #5a82fa); /* keep modern colors */
+    text-align: center; /* center content */
+    padding: 30px; /* compact height */
+    color: white;
+}
+
+/* Social icons */
+.socials {
+    display: flex;
+    justify-content: center; /* center icons horizontally */
+    gap: 20px; /* small spacing */
+    margin-bottom: 10px;
+}
+
+.socials img {
+    width: 40px; /* compact size */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.socials img:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.7));
+}
+
+/* Cash App Button */
+.cash-app-btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: #00C244; /* keep original green */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.cash-app-btn:hover {
+    background: #ffffff; /* darker green hover */
+    transform: scale(1.05);
+    color: rgb(30, 255, 0); 
+}
+
+.cash-app-btn img {
+    width: 60px; /* compact icon */
+    margin-right: 8px;
+}
