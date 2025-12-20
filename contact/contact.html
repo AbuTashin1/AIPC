@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - AIPC</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+    <!-- Header -->
+   <!-- In any subfolder HTML -->
+<header>
+    <div class="logo">
+        <a href="../index.html"><img src="../images/aipc.PNG" alt="AIPC Logo"></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="../vocab/aipcvocab.html">Apic</a></li>
+            <li><a href="../events/events.html">Events</a></li>
+            <li><a href="../involved/involved.html">Get Involved</a></li>
+            <li><a href="../contact/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <!-- Main Content -->
+    <div class="mainbox">
+
+        <!-- Page Title -->
+        <div class="page-title">
+            <h1>Get In Touch</h1>
+            <p>We'd love to hear from you</p>
+        </div>
+
+        <div class="contact-grid">
+
+            <!-- Contact Form -->
+            <div class="contact-form-box">
+                <h2>Send Us a Message</h2>
+                <form id="contactForm" action="https://formsubmit.co/your-email@example.com" method="POST">
+                    <!-- Honeypot for spam -->
+                    <input type="text" name="_honey" style="display:none">
+                    <!-- Disable captcha -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <!-- Success page redirect -->
+                    <input type="hidden" name="_next" value="https://yoursite.com/contact.html?success=true">
+                    
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="How can we help?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+                
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">✓</div>
+                    <h3>Message Sent!</h3>
+                    <p>Thank you for reaching out. We'll get back to you soon.</p>
+                </div>
+            </div>
+
+            <!-- Right Side - Socials & Donate -->
+            <div class="contact-info-box">
+                
+                <!-- Connect With Us -->
+                <div class="info-section">
+                    <h2>Connect With Us</h2>
+                    <p>Follow us on social media to stay updated</p>
+                    
+                    <div class="social-links">
+                        <a href="https://youtube.com" target="_blank" class="social-card">
+                            <div class="social-icon youtube">
+                                <img src="images/video.png" alt="YouTube">
+                            </div>
+                            <div class="social-text">
+                                <span class="social-name">YouTube</span>
+                                <span class="social-handle">@AIPCOfficial</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.instagram.com/aipc.world" target="_blank" class="social-card">
+                            <div class="social-icon instagram">
+                                <img src="images/instagram.png" alt="Instagram">
+                            </div>
+                            <div class="social-text">
+                                <span class="social-name">Instagram</span>
+                                <span class="social-handle">@aipc.world</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.facebook.com/share/17GWzR4HaJ/" target="_blank" class="social-card">
+                            <div class="social-icon facebook">
+                                <img src="images/facebook.png" alt="Facebook">
+                            </div>
+                            <div class="social-text">
+                                <span class="social-name">Facebook</span>
+                                <span class="social-handle">AIPC Official</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.tiktok.com/@aipcofficial" target="_blank" class="social-card">
+                            <div class="social-icon tiktok">
+                                <img src="images/tiktok.png" alt="TikTok">
+                            </div>
+                            <div class="social-text">
+                                <span class="social-name">TikTok</span>
+                                <span class="social-handle">@aipcofficial</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://twitter.com" target="_blank" class="social-card">
+                            <div class="social-icon twitter">
+                                <img src="images/twitter.png" alt="Twitter">
+                            </div>
+                            <div class="social-text">
+                                <span class="social-name">Twitter / X</span>
+                                <span class="social-handle">@AIPC</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Donate Section -->
+                <div class="donate-section">
+                    <h2>Support Our Mission</h2>
+                    <p>Your donation helps us create positive change in communities across America.</p>
+                    
+                    <a href="https://cash.app/$YourCashAppName" target="_blank" class="donate-btn">
+                        <div class="donate-icon">
+                            <img src="images/cashapp.png" alt="Cash App">
+                        </div>
+                        <div class="donate-text">
+                            <span class="donate-title">Donate via Cash App</span>
+                            <span class="donate-handle">$YourCashAppName</span>
+                        </div>
+                        <span class="donate-arrow">→</span>
+                    </a>
+                    
+                    <div class="donate-note">
+                        <span>💧</span> Every drop counts. Together we form the ocean.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="contact.js"></script>
+</body>
+</html>
