@@ -54,22 +54,25 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Load YouTube thumbnail for this card
+        // Load YouTube thumbnail for THIS card only
         const videoThumbnail = card.querySelector('.video-thumbnail');
-        if (videoThumbnail) {
-            const videoUrl = videoThumbnail.dataset.video || card.dataset.video;
-            if (videoUrl) {
-                const videoId = extractYouTubeId(videoUrl);
-                if (videoId) {
-                    const thumbnailImg = videoThumbnail.querySelector('.yt-thumbnail');
-                    // Use high quality thumbnail
-                    thumbnailImg.src = `https://img.youtube.com/vi/iL-cqyBm8nI/hqdefault.jpg`;
-                    
-                    // Click to open video
-                    videoThumbnail.addEventListener('click', () => {
-                        window.open(videoUrl, '_blank');
-                    });
-                }
+        const videoUrl = card.dataset.video; // Only get from parent card
+        
+        if (videoThumbnail && videoUrl) {
+            const videoId = extractYouTubeId(videoUrl);
+            
+            if (videoId) {
+                const thumbnailImg = videoThumbnail.querySelector('.yt-thumbnail');
+                
+                // Set unique thumbnail for this card
+                thumbnailImg.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                
+                // Click to open video - unique for this card
+                videoThumbnail.addEventListener('click', () => {
+                    window.open(videoUrl, '_blank');
+                });
+                
+                console.log(`Card ${cardIndex + 1}: Loaded thumbnail for ${videoId}`);
             }
         }
         
