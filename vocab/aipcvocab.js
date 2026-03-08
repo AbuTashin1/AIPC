@@ -2,7 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Initialize all sliders
     const vocabCards = document.querySelectorAll('.vocab-card');
     
     vocabCards.forEach((card, cardIndex) => {
@@ -13,131 +12,77 @@ document.addEventListener('DOMContentLoaded', function() {
         const dots = card.querySelectorAll('.dot');
         let currentSlide = 0;
         
-        // Function to show a specific slide
         function showSlide(index) {
-            // Handle wraparound
             if (index >= slides.length) index = 0;
             if (index < 0) index = slides.length - 1;
             
-            // Update slides
             slides.forEach((slide, i) => {
                 slide.classList.remove('active');
-                if (i === index) {
-                    slide.classList.add('active');
-                }
+                if (i === index) slide.classList.add('active');
             });
             
-            // Update dots
             dots.forEach((dot, i) => {
                 dot.classList.remove('active');
-                if (i === index) {
-                    dot.classList.add('active');
-                }
+                if (i === index) dot.classList.add('active');
             });
             
             currentSlide = index;
         }
         
-        // Arrow button events
-        prevBtn.addEventListener('click', () => {
-            showSlide(currentSlide - 1);
-        });
+        prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+        nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
         
-        nextBtn.addEventListener('click', () => {
-            showSlide(currentSlide + 1);
-        });
-        
-        // Dot click events
         dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                showSlide(i);
-            });
+            dot.addEventListener('click', () => showSlide(i));
         });
         
-        // Load YouTube thumbnail for THIS card only
+        // YouTube thumbnail
         const videoThumbnail = card.querySelector('.video-thumbnail');
-        const videoUrl = card.dataset.video; // Only get from parent card
+        const videoUrl = card.dataset.video;
         
         if (videoThumbnail && videoUrl) {
             const videoId = extractYouTubeId(videoUrl);
-            
             if (videoId) {
                 const thumbnailImg = videoThumbnail.querySelector('.yt-thumbnail');
-                
-                // Set unique thumbnail for this card
                 thumbnailImg.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                
-                // Click to open video - unique for this card
                 videoThumbnail.addEventListener('click', () => {
                     window.open(videoUrl, '_blank');
                 });
-                
-                console.log(`Card ${cardIndex + 1}: Loaded thumbnail for ${videoId}`);
             }
         }
         
-        // Keyboard navigation when card is focused/hovered
+        // Keyboard nav
         card.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                showSlide(currentSlide - 1);
-            } else if (e.key === 'ArrowRight') {
-                showSlide(currentSlide + 1);
-            }
+            if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+            else if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
         });
         
-        // Touch/swipe support
+        // Touch swipe
         let touchStartX = 0;
-        let touchEndX = 0;
-        
         slider.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
         }, { passive: true });
         
         slider.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, { passive: true });
-        
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-            
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    // Swipe left - next slide
-                    showSlide(currentSlide + 1);
-                } else {
-                    // Swipe right - previous slide
-                    showSlide(currentSlide - 1);
-                }
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) {
+                showSlide(diff > 0 ? currentSlide + 1 : currentSlide - 1);
             }
-        }
+        }, { passive: true });
     });
     
-    // Extract YouTube video ID from URL
     function extractYouTubeId(url) {
-        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-        const match = url.match(regExp);
+        const match = url.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/);
         return (match && match[2].length === 11) ? match[2] : null;
     }
     
-    // Add hover effect enhancements
-    const allBoxes = document.querySelectorAll('.vocab-box');
-    allBoxes.forEach(box => {
-        box.addEventListener('mouseenter', function() {
-            this.style.zIndex = '10';
-        });
-        box.addEventListener('mouseleave', function() {
-            this.style.zIndex = '1';
-        });
+    // Hover z-index
+    document.querySelectorAll('.vocab-box').forEach(box => {
+        box.addEventListener('mouseenter', function() { this.style.zIndex = '10'; });
+        box.addEventListener('mouseleave', function() { this.style.zIndex = '1'; });
     });
     
-    // Animate cards on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
+    // Scroll animation
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -146,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     
     vocabCards.forEach((card, index) => {
         card.style.opacity = '0';
@@ -155,22 +100,17 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
     
-    // Add ripple effect to buttons
-    const buttons = document.querySelectorAll('.arrow-btn, .example-tag');
-    buttons.forEach(btn => {
+    // Ripple effect
+    document.querySelectorAll('.arrow-btn, .example-tag').forEach(btn => {
         btn.addEventListener('click', function(e) {
             const ripple = document.createElement('span');
             ripple.classList.add('ripple');
-            
             const rect = this.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
-            
             ripple.style.width = ripple.style.height = size + 'px';
             ripple.style.left = e.clientX - rect.left - size / 2 + 'px';
             ripple.style.top = e.clientY - rect.top - size / 2 + 'px';
-            
             this.appendChild(ripple);
-            
             setTimeout(() => ripple.remove(), 600);
         });
     });
@@ -178,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('AIPC Vocabulary page loaded!');
 });
 
-// Add ripple effect styles dynamically
+// Ripple styles
 const rippleStyle = document.createElement('style');
 rippleStyle.textContent = `
     .ripple {
@@ -189,14 +129,9 @@ rippleStyle.textContent = `
         animation: ripple-animation 0.6s linear;
         pointer-events: none;
     }
-    
     @keyframes ripple-animation {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
+        to { transform: scale(4); opacity: 0; }
     }
-    
     .arrow-btn, .example-tag {
         position: relative;
         overflow: hidden;
