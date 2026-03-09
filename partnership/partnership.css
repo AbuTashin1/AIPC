@@ -164,6 +164,38 @@ footer { background: linear-gradient(180deg, #1a2a4a, #0f172a); color: rgba(255,
 .footer-bottom { text-align: center; padding: 18px 0; font-size: 0.78rem; color: rgba(255,255,255,0.25); }
 
 /* ═══ RESPONSIVE ═══ */
-@media (max-width: 1050px) { .mainbox { margin: 30px 50px 50px; } .partners-row { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 900px) { .hamburger { display: flex; } #mainNav { display: none; } header { padding: 8px 20px; } .become-partner { grid-template-columns: 1fr; } .mainbox { margin: 20px 30px 40px; } .footer-inner { flex-direction: column; text-align: center; align-items: center; } }
-@media (max-width: 600px) { .mainbox { margin: 15px; } .partners-row { grid-template-columns: 1fr; } .page-title h1 { font-size: 1.8rem; } header { padding: 8px 14px; } footer { padding: 28px 14px 0; } }
+@media (max-width: 1050px) {
+    .mainbox { margin: 30px 50px 50px; }
+    .partners-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+    .hamburger { display: flex; }
+    #mainNav { display: none; }
+    header { padding: 8px 20px; }
+    .become-partner { grid-template-columns: 1fr; }
+    .mainbox { margin: 20px 20px 40px; }
+    .footer-inner { flex-direction: column; text-align: center; align-items: center; }
+}
+
+@media (max-width: 750px) {
+    .partners-row { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .p-card { max-width: 100%; }
+    .p-info { min-height: auto; }
+}
+
+@media (max-width: 600px) {
+    .mainbox { margin: 15px 12px; }
+    .page-title { padding: 22px 18px; }
+    .page-title h1 { font-size: 1.8rem; }
+    .page-title p { font-size: 0.95rem; }
+    .partner-intro { padding: 20px 22px; }
+    .partner-intro p { font-size: 0.93em; }
+    .become-left { padding: 26px 22px; }
+    .become-left h2 { font-size: 1.35em; }
+    .cta-box { padding: 28px 22px; }
+    .cta-box h3 { font-size: 1.25em; }
+    .cta-btn { padding: 12px 22px; font-size: 0.9em; }
+    header { padding: 8px 14px; }
+    footer { padding: 28px 14px 0; }
+}
