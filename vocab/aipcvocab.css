@@ -1,7 +1,14 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'DM Sans', 'Segoe UI', sans-serif;
     background-color: #f4f6f8;
+    overflow-x: hidden;
 }
 
 /* ═══════════════════════════════════════
@@ -195,6 +202,7 @@ header {
     color: #1a2a5a;
     margin: 0 0 10px 0;
     font-size: 2.5rem;
+    font-family: 'Playfair Display', Georgia, serif;
 }
 
 .page-title p {
@@ -668,6 +676,20 @@ footer {
     padding: 18px 0;
     font-size: 0.78rem;
     color: rgba(255,255,255,0.25);
+}
+
+.footer-about-link {
+    display: inline-block;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    transition: color 0.2s ease;
+}
+
+.footer-about-link:hover {
+    color: rgba(255,255,255,0.85);
 }
 
 /* ═══════════════════════════════════════

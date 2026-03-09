@@ -38,7 +38,7 @@
     <nav id="mainNav">
         <ul>
             <li><a href="${p}partnership/partenership.html">Partnership</a></li>
-            <li><a href="${p}vocab/aipcvocab.html">Aipc Vocab</a></li>
+            <li><a href="${p}vocab/aipcvocab.html">Apic Vocab</a></li>
             <li><a href="${p}involved/involved.html">Get Involved</a></li>
             <li><a href="${p}contact/contact.html">Contact</a></li>
         </ul>

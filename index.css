@@ -1,11 +1,15 @@
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
 body {
     font-family: 'DM Sans', 'Segoe UI', sans-serif;
     background-color: #f4f6f8;
     color: #1a2a5a;
-    overflow-x: hidden;
 }
 
 :root {
@@ -22,6 +26,21 @@ body {
     --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
     --shadow-lg: 0 12px 40px rgba(0,0,0,0.13);
     --radius: 15px;
+}
+
+
+.footer-about-link {
+    display: inline-block;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    transition: color 0.2s ease;
+}
+
+.footer-about-link:hover {
+    color: rgba(255,255,255,0.85);
 }
 
 /* ═══════════════════════════════════════
@@ -616,6 +635,20 @@ footer {
     width: 26px;
     height: 26px;
     border-radius: 6px;
+}
+
+.footer-about-link {
+    display: inline-block;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    transition: color 0.2s ease;
+}
+
+.footer-about-link:hover {
+    color: rgba(255,255,255,0.85);
 }
 
 .footer-bottom {

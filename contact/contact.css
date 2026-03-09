@@ -1,8 +1,15 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
     background-color: #f4f6f8;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 /* ═══ Header (nav.js) ═══ */
@@ -79,14 +86,17 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 .social-links { display: flex; flex-direction: column; gap: 12px; }
 .social-card { display: flex; align-items: center; gap: 15px; padding: 12px 15px; background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%); border-radius: 12px; text-decoration: none; transition: all 0.3s ease; border: 2px solid transparent; }
 .social-card:hover { transform: translateX(8px); border-color: #0059ff; box-shadow: 0 4px 15px rgba(0,89,255,0.15); }
-.social-icon { width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; transition: transform 0.3s ease; }
-.social-icon img { width: 28px; height: 28px; filter: brightness(0) invert(1); }
+.social-icon { width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease; }
 .social-card:hover .social-icon { transform: scale(1.1); }
-.social-icon.youtube { background: linear-gradient(135deg, #ff4444, #cc0000); }
-.social-icon.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-.social-icon.facebook { background: linear-gradient(135deg, #4267B2, #2d4a8a); }
-.social-icon.tiktok { background: linear-gradient(135deg, #000000, #333333); }
-.social-icon.twitter { background: linear-gradient(135deg, #1a1a1a, #000000); }
+.social-icon.youtube { background: linear-gradient(135deg, #dce9ff, #c4daff); }
+.social-icon.instagram { background: linear-gradient(135deg, #dce9ff, #c4daff); }
+.social-icon.facebook { background: linear-gradient(135deg, #dce9ff, #c4daff); }
+.social-icon.tiktok { background: linear-gradient(135deg, #dce9ff, #c4daff); }
+.social-icon.twitter { background: linear-gradient(135deg, #dce9ff, #c4daff); }
+.social-icon img { width: 22px; height: 22px; filter: none; opacity: 0.7; transition: opacity 0.2s; }
+.social-card:hover .social-icon img { opacity: 1; }
+.social-card:hover .social-icon { transform: scale(1.1); background: linear-gradient(135deg, #0059ff, #1a2a5a); }
+.social-card:hover .social-icon img { filter: brightness(0) invert(1); opacity: 1; }
 .social-text { display: flex; flex-direction: column; }
 .social-name { color: #1a2a5a; font-weight: 600; font-size: 1rem; }
 .social-handle { color: #0059ff; font-size: 0.85rem; }
