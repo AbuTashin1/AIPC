@@ -54,8 +54,8 @@ function buildStars(w, h) {
 
 function getArenaX(cx) { return cx - wrap.getBoundingClientRect().left; }
 wrap.addEventListener('mousemove', e => { if (gameState==='playing') catcherX = getArenaX(e.clientX); });
-wrap.addEventListener('touchmove', e => { e.preventDefault(); if (gameState==='playing') catcherX = getArenaX(e.touches[0].clientX); }, { passive: false });
-wrap.addEventListener('touchstart', e => { e.preventDefault(); if (gameState==='playing') catcherX = getArenaX(e.touches[0].clientX); }, { passive: false });
+wrap.addEventListener('touchmove', e => { if (gameState==='playing') { e.preventDefault(); catcherX = getArenaX(e.touches[0].clientX); } }, { passive: false });
+wrap.addEventListener('touchstart', e => { if (gameState==='playing') { e.preventDefault(); catcherX = getArenaX(e.touches[0].clientX); } }, { passive: false });
 document.addEventListener('keydown', e => {
     if (e.key==='Escape'||e.key==='p'||e.key==='P') {
         if (gameState==='playing') pauseGame(); else if (gameState==='paused') resumeGame();
