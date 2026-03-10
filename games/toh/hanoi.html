@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tower of Unity — AIPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hanoi.css">
+</head>
+<body>
+
+<!-- Hero Banner (old style, compact) -->
+<section class="game-hero">
+    <div class="game-hero-bg"></div>
+    <a href="../games.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        Back to AIPC
+    </a>
+    <div class="game-hero-content">
+        <p class="game-eyebrow">AIPC Learning Games</p>
+        <h1 class="game-title">Tower of <span>Unity</span></h1>
+        <p class="game-subtitle">Move all blocks from Start to Goal. Bigger can't go on smaller.</p>
+    </div>
+    <!-- Floating drops -->
+    <div class="hero-drops" aria-hidden="true">
+        <div class="drop drop-1"></div>
+        <div class="drop drop-2"></div>
+        <div class="drop drop-3"></div>
+    </div>
+</section>
+
+<!-- Controls + Stats -->
+<div class="game-bar">
+    <div class="controls-side">
+        <div class="ctrl">
+            <span class="ctrl-lbl">Drops</span>
+            <button class="ctrl-btn" id="discMinus">−</button>
+            <span class="ctrl-val" id="discCount">3</span>
+            <button class="ctrl-btn" id="discPlus">+</button>
+        </div>
+        <div class="ctrl peg-ctrl">
+            <span class="ctrl-lbl">Pillars</span>
+            <button class="ctrl-btn" id="pegMinus">−</button>
+            <span class="ctrl-val" id="pegCount">3</span>
+            <button class="ctrl-btn" id="pegPlus">+</button>
+        </div>
+        <button class="reset-btn" id="resetBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            Reset
+        </button>
+    </div>
+    <div class="stats-side">
+        <div class="st"><span class="st-num" id="moveCount">0</span><span class="st-lbl">Moves</span></div>
+        <span class="st-sep">/</span>
+        <div class="st"><span class="st-num" id="minMoves">7</span><span class="st-lbl">Target</span></div>
+        <span class="st-sep">·</span>
+        <div class="st"><span class="st-num" id="timerDisplay">0:00</span><span class="st-lbl">Time</span></div>
+    </div>
+</div>
+
+<!-- ★ GAME BOARD ★ -->
+<div class="board-wrap">
+    <div class="board" id="board"></div>
+</div>
+
+<!-- Hint -->
+<p class="hint" id="hintBar">Tap a pillar to pick up · tap another to place</p>
+
+<!-- Win Overlay -->
+<div class="win-overlay" id="winOverlay">
+    <div class="win-card">
+        <div class="win-stars" id="winStars">★★★</div>
+        <h2>Drops United!</h2>
+        <p class="win-msg" id="winMessage">7 moves · Target 7 · 0:32</p>
+        <p class="win-quote">"The ocean is nothing but water drops united."</p>
+        <button class="win-btn" id="playAgainBtn">Play Again</button>
+    </div>
+</div>
+
+<!-- Vocab Tie-in -->
+<div class="vocab-tie">
+    <div class="vocab-tie-inner">
+        <span class="vocab-badge">AIPC Vocab</span>
+        <p><strong>Failure → Growth Step:</strong> Every wrong move teaches you something. Reset and try again — that's not failure, that's learning.</p>
+    </div>
+</div>
+
+<script src="hanoi.js"></script>
+</body>
+</html>

@@ -573,3 +573,30 @@ footer {
 
     footer { padding: 28px 14px 0; }
 }
+
+.footer-bottom-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.footer-about-link {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.footer-about-link:hover {
+    color: white;
+}
+
+.footer-games-link {
+    opacity: 0.9;
+}
+
+.footer-divider {
+    color: rgba(255,255,255,0.25);
+}

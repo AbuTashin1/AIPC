@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <title>Drop Catcher — AIPC Games</title>
+    <title>Drops of Change — AIPC Games</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="dropcatcher.css" />
@@ -11,7 +11,7 @@
 <body>
 <main class="game-main">
 
-    <!-- HUD -->
+    <!-- HUD (mobile only — desktop uses side panels) -->
     <div class="hud" id="hud">
         <div class="hud-left">
             <a href="../games.html" class="back-btn" title="Back to Games">
@@ -41,29 +41,62 @@
         </div>
     </div>
 
-    <!-- Outer centers and caps the arena on wide screens -->
     <div class="arena-outer">
+
+        <!-- LEFT: Back button + Score + Best + Lives — BIG -->
+        <div class="side-panel side-left">
+            <a href="../games.html" class="sp-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+                Back to Games
+            </a>
+
+            <div class="sp-brand">
+                <h2 class="sp-title">Drops of <em>Change</em></h2>
+            </div>
+
+            <div class="sp-live-stats">
+                <div class="sp-big-stat">
+                    <span class="sp-big-num" id="spScore">0</span>
+                    <span class="sp-big-label">Score</span>
+                </div>
+                <div class="sp-big-stat">
+                    <span class="sp-big-num sp-best" id="spBest">0</span>
+                    <span class="sp-big-label">Best</span>
+                </div>
+                <div class="sp-big-stat">
+                    <span class="sp-big-label">Lives</span>
+                    <div class="sp-hearts" id="spHearts">
+                        <span class="sp-heart">💧</span>
+                        <span class="sp-heart">💧</span>
+                        <span class="sp-heart">💧</span>
+                    </div>
+                </div>
+                <div class="sp-level-row">
+                    <span class="sp-level-badge" id="spLevel">LEVEL 1</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME -->
         <div class="arena-wrap" id="arenaWrap">
             <canvas id="gameCanvas"></canvas>
 
-            <!-- START -->
             <div class="overlay" id="startScreen">
                 <div class="overlay-card">
                     <div class="overlay-icon">💧</div>
-                    <h1 class="overlay-title">Drop <em>Catcher</em></h1>
+                    <h1 class="overlay-title">Drops of <em>Change</em></h1>
                     <p class="overlay-sub">Catch drops. Dodge bombs. Unite the ocean.</p>
                     <div class="legend">
-                        <div class="legend-row"><span class="leg-icon">💧</span><span>Catch it — +10 pts</span></div>
-                        <div class="legend-row"><span class="leg-icon">💣</span><span>Dodge it — lose a life</span></div>
-                        <div class="legend-row"><span class="leg-icon">✨</span><span>Golden drop — +25 pts</span></div>
+                        <div class="legend-row"><span class="leg-icon">💧</span><span>Catch — +10 pts</span></div>
+                        <div class="legend-row"><span class="leg-icon">💣</span><span>Dodge — lose a life</span></div>
+                        <div class="legend-row"><span class="leg-icon">✨</span><span>Golden — +25 pts</span></div>
                     </div>
-                    <div class="controls-hint">🖱 Mouse &nbsp;·&nbsp; 👆 Touch anywhere</div>
+                    <div class="controls-hint">🖱 Mouse &nbsp;·&nbsp; 👆 Touch</div>
                     <button class="play-btn" id="startBtn">Play Now</button>
                     <div class="best-line" id="startBest"></div>
                 </div>
             </div>
 
-            <!-- GAME OVER -->
             <div class="overlay hidden" id="gameOverScreen">
                 <div class="overlay-card">
                     <div class="overlay-icon">💥</div>
@@ -76,25 +109,44 @@
                     </div>
                     <div class="new-best-banner hidden" id="newBestBanner">🏆 New Best!</div>
                     <button class="play-btn" id="retryBtn">Play Again</button>
-                    <a href="games.html" class="overlay-back">← Back to Games</a>
+                    <a href="../games.html" class="overlay-back">← Back to Games</a>
                 </div>
             </div>
 
-            <!-- PAUSE -->
             <div class="overlay hidden" id="pauseScreen">
                 <div class="overlay-card">
                     <div class="overlay-icon">⏸</div>
                     <h1 class="overlay-title">Paused</h1>
                     <button class="play-btn" id="resumeBtn">Resume</button>
-                    <a href="games.html" class="overlay-back">← Quit to Games</a>
+                    <a href="../games.html" class="overlay-back">← Quit to Games</a>
                 </div>
             </div>
         </div>
+
+        <!-- RIGHT: Session stats + AIPC quote -->
+        <div class="side-panel side-right">
+            <div class="sp-session">
+                <h3 class="sp-heading">Session</h3>
+                <div class="sp-row"><span>Games</span><span class="sp-row-val" id="spGames">0</span></div>
+                <div class="sp-row"><span>Drops Caught</span><span class="sp-row-val" id="spDrops">0</span></div>
+                <div class="sp-row"><span>Best Combo</span><span class="sp-row-val" id="spCombo">0</span></div>
+                <div class="sp-row"><span>Highest Level</span><span class="sp-row-val" id="spHighLvl">1</span></div>
+            </div>
+
+            <div class="sp-quote-area">
+                <blockquote class="sp-quote">
+                    <p id="spQuote">"No one is afraid of water drops. But everyone is afraid of the ocean."</p>
+                    <cite id="spCite">— President of AIPC</cite>
+                </blockquote>
+            </div>
+        </div>
+
     </div>
 
     <div class="combo-flash hidden" id="comboFlash"></div>
 </main>
 
 <script src="dropcatcher.js"></script>
+<script src="sidepanels.js"></script>
 </body>
 </html>
