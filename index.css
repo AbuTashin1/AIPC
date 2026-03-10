@@ -699,6 +699,29 @@ footer {
     }
 }
 
+
+/* ── Footer bottom links row (add to index.css) ── */
+.footer-bottom-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    margin-bottom: 6px;
+}
+
+.footer-divider {
+    color: rgba(255,255,255,0.2);
+    font-size: 0.78rem;
+}
+
+.footer-games-link {
+    color: rgba(255,255,255,0.45);
+    transition: color 0.2s ease;
+}
+
+.footer-games-link:hover {
+    color: rgba(255,255,255,0.85);
+}
 @media (max-width: 500px) {
     header { padding: 8px 14px; }
     .logo-svg { height: 30px; }

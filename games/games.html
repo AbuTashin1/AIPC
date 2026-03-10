@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Games — AIPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../index.css" />
+    <style>
+        .games-hero {
+            background: linear-gradient(135deg, #002f8e 0%, #0059ff 45%, #3b82f6 100%);
+            padding: 60px 48px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .games-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 600px 300px at 80% 20%, rgba(255,255,255,0.07), transparent);
+        }
+        .games-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 12px;
+        }
+        .games-hero h1 span {
+            font-style: italic;
+            background: linear-gradient(90deg, #93c5fd, #dce9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .games-hero p {
+            color: rgba(255,255,255,0.72);
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .games-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,47,142,0.09);
+            overflow: hidden;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            position: relative;
+        }
+
+        .game-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,47,142,0.18);
+        }
+
+        .game-card-thumb {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card-thumb.blue-grad {
+            background: linear-gradient(135deg, #dce9ff, #93c5fd);
+        }
+
+        .game-card-thumb.coming {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            filter: grayscale(0.4);
+        }
+
+        .game-card-body {
+            padding: 20px 22px 22px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-badge {
+            display: inline-block;
+            font-size: 0.66rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 99px;
+            margin-bottom: 10px;
+            width: fit-content;
+        }
+
+        .game-badge.live {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .game-badge.soon {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        .game-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: #1a2a5a;
+            margin-bottom: 8px;
+        }
+
+        .game-card p {
+            font-size: 0.85rem;
+            color: #3a4a6a;
+            line-height: 1.6;
+            flex: 1;
+            opacity: 0.85;
+        }
+
+        .game-card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #0059ff;
+            background: #edf3ff;
+            padding: 8px 16px;
+            border-radius: 10px;
+            width: fit-content;
+            transition: all 0.2s ease;
+        }
+
+        .game-card:hover .game-card-cta {
+            background: linear-gradient(90deg, #8dadec, #0059ff);
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .games-hero { padding: 40px 20px 36px; }
+            .games-hero h1 { font-size: 2.1rem; }
+            .games-grid { padding: 28px 14px 56px; }
+        }
+    </style>
+</head>
+<body>
+
+<header></header>
+
+<div class="games-hero">
+    <h1>AIPC <span>Games</span></h1>
+    <p>Play, engage, and unite. Every game is rooted in the AIPC mission — fun with purpose.</p>
+</div>
+
+<div class="games-grid">
+
+    <!-- Drop Catcher -->
+    <a href="./dropclicker/dropcatcher.html" class="game-card">
+        <div class="game-card-thumb blue-grad">💧</div>
+        <div class="game-card-body">
+            <span class="game-badge live">▶ Live</span>
+            <h2>Drop Catcher</h2>
+            <p>Catch falling drops, dodge red bombs, grab golden ones. Combos, escalating speed, 3 lives. How long can you last?</p>
+            <span class="game-card-cta">Play now →</span>
+        </div>
+    </a>
+
+    <!-- Coming Soon placeholders -->
+    <div class="game-card" style="cursor:default;">
+        <div class="game-card-thumb coming">🧩</div>
+        <div class="game-card-body">
+            <span class="game-badge soon">Coming Soon</span>
+            <h2>Word Scramble</h2>
+            <p>Unscramble AIPC vocabulary words against the clock. Learn the mission while you play.</p>
+            <span class="game-card-cta" style="opacity:0.45;pointer-events:none;">Coming soon</span>
+        </div>
+    </div>
+
+    <div class="game-card" style="cursor:default;">
+        <div class="game-card-thumb coming">☮️</div>
+        <div class="game-card-body">
+            <span class="game-badge soon">Coming Soon</span>
+            <h2>Peace Quiz</h2>
+            <p>Match quotes to their AIPC values. How well do you know the mission?</p>
+            <span class="game-card-cta" style="opacity:0.45;pointer-events:none;">Coming soon</span>
+        </div>
+    </div>
+
+</div>
+
+<footer></footer>
+
+<script src="../nav.js"></script>
+</body>
+</html>
