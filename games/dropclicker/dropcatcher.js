@@ -52,10 +52,40 @@ function buildStars(w, h) {
     }));
 }
 
-function getArenaX(cx) { return cx - wrap.getBoundingClientRect().left; }
-wrap.addEventListener('mousemove', e => { if (gameState==='playing') catcherX = getArenaX(e.clientX); });
-wrap.addEventListener('touchmove', e => { if (gameState==='playing') { e.preventDefault(); catcherX = getArenaX(e.touches[0].clientX); } }, { passive: false });
-wrap.addEventListener('touchstart', e => { if (gameState==='playing') { e.preventDefault(); catcherX = getArenaX(e.touches[0].clientX); } }, { passive: false });
+// ─────────────────────────────────────
+// Universal Input (Desktop + Mobile)
+// ─────────────────────────────────────
+
+function getArenaX(cx) {
+    return cx - wrap.getBoundingClientRect().left;
+}
+
+// pointer events work for mouse, touch, and stylus
+wrap.addEventListener('pointerdown', e => {
+    if (gameState === 'playing') {
+        catcherX = getArenaX(e.clientX);
+    }
+});
+
+wrap.addEventListener('pointermove', e => {
+    if (gameState === 'playing') {
+        catcherX = getArenaX(e.clientX);
+    }
+});
+
+// fallback for older phones
+wrap.addEventListener('touchstart', e => {
+    if (gameState === 'playing') {
+        catcherX = getArenaX(e.touches[0].clientX);
+    }
+}, { passive: true });
+
+wrap.addEventListener('touchmove', e => {
+    if (gameState === 'playing') {
+        catcherX = getArenaX(e.touches[0].clientX);
+    }
+}, { passive: true });
+
 document.addEventListener('keydown', e => {
     if (e.key==='Escape'||e.key==='p'||e.key==='P') {
         if (gameState==='playing') pauseGame(); else if (gameState==='paused') resumeGame();
