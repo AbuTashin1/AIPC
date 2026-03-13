@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Rise of Hope — AIPC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TXRCH2H8B3"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-TXRCH2H8B3');
+</script>
+</head>
+<body>
+<main class="game-main">
+
+    <!-- HUD (mobile only) -->
+    <div class="hud" id="hud">
+        <div class="hud-left">
+            <a href="../games.html" class="back-btn" title="Back to Games">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <div class="hud-stat">
+                <span class="hud-label">SCORE</span>
+                <span class="hud-value" id="scoreDisplay">0</span>
+            </div>
+            <div class="hud-stat">
+                <span class="hud-label">BEST</span>
+                <span class="hud-value" id="bestDisplay">0</span>
+            </div>
+        </div>
+        <div class="hud-center">
+            <div class="hud-stat">
+                <span class="hud-label">TIME</span>
+                <span class="hud-value" id="timeDisplay">0:00</span>
+            </div>
+        </div>
+        <div class="hud-right"></div>
+    </div>
+
+    <div class="arena-outer">
+
+        <!-- LEFT PANEL -->
+        <div class="side-panel side-left">
+            <a href="../games.html" class="sp-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+                Back to Games
+            </a>
+            <div class="sp-brand">
+                <h2 class="sp-title">Rise of <em>Hope</em></h2>
+                <p class="sp-tagline">Guide the drop. Rise beyond obstacles.</p>
+            </div>
+            <div class="sp-live-stats">
+                <div class="sp-big-stat">
+                    <span class="sp-big-num" id="spScore">0</span>
+                    <span class="sp-big-label">Score</span>
+                </div>
+                <div class="sp-big-stat">
+                    <span class="sp-big-num sp-best" id="spBest">0</span>
+                    <span class="sp-big-label">Best</span>
+                </div>
+                <div class="sp-big-stat">
+                    <span class="sp-big-num" id="spTime">0:00</span>
+                    <span class="sp-big-label">Time</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME ARENA -->
+        <div class="arena-wrap" id="arenaWrap">
+            <div class="canvas-container" id="canvasContainer">
+                <canvas id="gameCanvas"></canvas>
+
+                <!-- Start Screen -->
+                <div class="overlay" id="startScreen">
+                    <div class="overlay-card">
+                        <div class="overlay-icon">💧</div>
+                        <h1 class="overlay-title">Rise of <em>Hope</em></h1>
+                        <p class="overlay-sub">Guide the drop through the walls. Speed increases with every pipe!</p>
+                        <div class="legend">
+                            <div class="legend-row"><span class="leg-icon">⎵</span><span>Space / Tap — Thrust up</span></div>
+                            <div class="legend-row"><span class="leg-icon">↑↓</span><span>Arrow keys — Move up / down</span></div>
+                            <div class="legend-row"><span class="leg-icon">🏆</span><span>Score = pipes passed</span></div>
+                        </div>
+                        <div class="controls-hint">Press <strong>Space</strong> or tap <strong>Play</strong> to start</div>
+                        <button class="play-btn" id="startBtn">Play Now</button>
+                        <div class="best-line" id="startBest"></div>
+                    </div>
+                </div>
+
+                <!-- Game Over Screen -->
+                <div class="overlay hidden" id="gameOverScreen">
+                    <div class="overlay-card">
+                        <div class="overlay-icon">💥</div>
+                        <h1 class="overlay-title">Game <em>Over</em></h1>
+                        <div class="result-grid">
+                            <div class="result-box"><span class="result-val" id="finalScore">0</span><span class="result-lbl">Score</span></div>
+                            <div class="result-box"><span class="result-val" id="finalBest">0</span><span class="result-lbl">Best</span></div>
+                            <div class="result-box"><span class="result-val" id="finalTime">0:00</span><span class="result-lbl">Time</span></div>
+                        </div>
+                        <div class="new-best-banner hidden" id="newBestBanner">🏆 New Best!</div>
+                        <button class="play-btn" id="retryBtn">Play Again</button>
+                        <p class="controls-hint" style="margin-top:6px;margin-bottom:0">or press <strong>Space</strong></p>
+                        <a href="../games.html" class="overlay-back">← Back to Games</a>
+                    </div>
+                </div>
+
+                <!-- Pause Screen -->
+                <div class="overlay hidden" id="pauseScreen">
+                    <div class="overlay-card">
+                        <div class="overlay-icon">⏸</div>
+                        <h1 class="overlay-title">Paused</h1>
+                        <button class="play-btn" id="resumeBtn">Resume</button>
+                        <a href="../games.html" class="overlay-back">← Quit to Games</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="side-panel side-right">
+            <div class="sp-session">
+                <h3 class="sp-heading">Session</h3>
+                <div class="sp-row"><span>Games</span><span class="sp-row-val" id="spGames">0</span></div>
+                <div class="sp-row"><span>Best Run</span><span class="sp-row-val" id="spBestRun">0</span></div>
+                <div class="sp-row"><span>Best Time</span><span class="sp-row-val" id="spBestTime">0:00</span></div>
+            </div>
+            <div class="sp-how-to">
+                <h3 class="sp-heading">How to Play</h3>
+                <div class="sp-tip"><span class="sp-tip-key">Space / Tap</span><span>Thrust upward</span></div>
+                <div class="sp-tip"><span class="sp-tip-key">↑ / ↓</span><span>Move up or down</span></div>
+                <div class="sp-tip"><span class="sp-tip-key">P / Esc</span><span>Pause game</span></div>
+            </div>
+            <div class="sp-quote-area">
+                <blockquote class="sp-quote">
+                    <p id="spQuote">"No one is afraid of water drops. But everyone is afraid of the ocean."</p>
+                    <cite id="spCite">— President of AIPC</cite>
+                </blockquote>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="combo-flash hidden" id="comboFlash"></div>
+</main>
+
+<script src="game.js"></script>
+</body>
+</html>

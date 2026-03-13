@@ -1,0 +1,218 @@
+/* ═══════════════════════════════════════
+   GAMES PAGE — games.css
+   ═══════════════════════════════════════ */
+
+/* ── Hero ── */
+.games-hero {
+    background: linear-gradient(135deg, #002f8e 0%, #0059ff 45%, #3b82f6 100%);
+    padding: 56px 48px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.games-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+}
+.games-hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+        radial-gradient(ellipse 600px 400px at 15% 85%, rgba(59,130,246,0.3), transparent),
+        radial-gradient(ellipse 500px 400px at 85% 15%, rgba(255,255,255,0.06), transparent);
+}
+.games-hero-eyebrow {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 12px;
+    font-weight: 500;
+    position: relative; z-index: 1;
+}
+.games-hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3.2rem;
+    color: white;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 14px;
+    line-height: 1.15;
+}
+.games-hero h1 span {
+    font-style: italic;
+    background: linear-gradient(90deg, #93c5fd, #dce9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.games-hero p {
+    color: rgba(255,255,255,0.75);
+    font-size: 1.05rem;
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.65;
+}
+
+/* ── Games Grid — always horizontal ── */
+.games-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+/* ── Game Card ── */
+.game-card {
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0,47,142,0.08);
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+.game-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 44px rgba(0,47,142,0.16);
+}
+
+.game-card-thumb {
+    aspect-ratio: 3 / 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.game-card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Shimmer on hover */
+.game-card-thumb::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.game-card:hover .game-card-thumb::after {
+    opacity: 1;
+}
+
+.game-card-body {
+    padding: 20px 22px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-badge {
+    display: inline-block;
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 99px;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+.game-badge.live {
+    background: #dcfce7;
+    color: #15803d;
+}
+.game-badge.soon {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.game-card h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem;
+    color: #1a2a5a;
+    margin-bottom: 8px;
+    line-height: 1.25;
+}
+
+.game-card p {
+    font-size: 0.88rem;
+    color: #3a4a6a;
+    line-height: 1.65;
+    flex: 1;
+    opacity: 0.85;
+}
+
+.game-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #0059ff;
+    background: #edf3ff;
+    padding: 9px 18px;
+    border-radius: 10px;
+    width: fit-content;
+    transition: all 0.25s ease;
+}
+.game-card-cta .arrow {
+    transition: transform 0.2s ease;
+}
+.game-card:hover .game-card-cta {
+    background: linear-gradient(90deg, #8dadec, #0059ff);
+    color: white;
+}
+.game-card:hover .game-card-cta .arrow {
+    transform: translateX(4px);
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+
+/* Tablet — 2 columns */
+@media (max-width: 900px) {
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+    }
+    .games-hero { padding: 40px 20px 36px; }
+    .games-hero h1 { font-size: 2.6rem; }
+}
+
+/* Mobile — stack */
+@media (max-width: 600px) {
+    .games-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+    .games-hero h1 { font-size: 2.2rem; }
+    .games-hero p { font-size: 0.92rem; }
+    .games-section { padding: 24px 14px 48px; }
+}
+
+@media (max-width: 400px) {
+    .games-hero h1 { font-size: 1.9rem; }
+    .game-card h2 { font-size: 1.15rem; }
+}
